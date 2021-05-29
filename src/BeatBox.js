@@ -5,27 +5,46 @@ import classes from "./BeatBox.module.css";
 class BeatBox extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { date: new Date() };
+    this.state = {
+      blinkerIsOn: false,
+    };
   }
 
+  turnBlinkerOff = () => {
+    this.setState({
+      blinkerIsOn: false,
+    });
+  };
+
   blinker = () => {
+    this.setState({
+      blinkerIsOn: true,
+    });
+
     let currentlyLiteNumber = 1;
-    setInterval(() => {
+
+    let intervalId = setInterval(() => {
+      if (!this.state.blinkerIsOn) {
+        clearInterval(intervalId);
+      }
+
       if (currentlyLiteNumber - 1 > 0) {
         document
           .getElementById(currentlyLiteNumber - 1)
-          .classList.remove("lite");
+          .classList.remove(classes["lite"]);
       } else {
-        document.getElementById(4).classList.remove("lite");
+        document.getElementById(4).classList.remove(classes["lite"]);
       }
 
-      document.getElementById(currentlyLiteNumber).classList.add("lite");
+      document
+        .getElementById(currentlyLiteNumber)
+        .classList.add(classes["lite"]);
 
       currentlyLiteNumber < 4
         ? (currentlyLiteNumber += 1)
         : (currentlyLiteNumber = 1);
     }, 500);
-  }
+  };
 
   render() {
     return (
@@ -37,6 +56,7 @@ class BeatBox extends React.Component {
           <span id={4}>4</span>
         </div>
         <button onClick={() => this.blinker()}>Start Blinker</button>
+        <button onClick={() => this.turnBlinkerOff()}>Stop Blinker</button>
       </div>
     );
   }
