@@ -3,6 +3,7 @@ import React from "react";
 import { Card, Button } from "@material-ui/core";
 
 // components
+import BeatGrid from "./BeatGrid";
 import BpmSlider from "./BpmSlider";
 
 class BeatBox extends React.Component {
@@ -11,6 +12,7 @@ class BeatBox extends React.Component {
     this.state = {
       blinkerIsOn: false,
       bpm: 120, // beats per minute
+      beat: 1,
     };
   }
 
@@ -39,6 +41,10 @@ class BeatBox extends React.Component {
     let currentlyLiteNumber = 1;
 
     let intervalId = setInterval(() => {
+      this.setState({
+        beat: currentlyLiteNumber,
+      });
+
       if (!this.state.blinkerIsOn) {
         clearInterval(intervalId);
       }
@@ -65,18 +71,19 @@ class BeatBox extends React.Component {
         <div className="ungracefulSpacer"></div>
         <Card className="BeatBox">
           <div className="header">BeatBox</div>
-          <div>
+          <div className="beatNumbers">
             <span id={1}>1</span>
             <span id={2}>2</span>
             <span id={3}>3</span>
             <span id={4}>4</span>
           </div>
+          <BeatGrid beat={this.state.beat} />
           <Button
             variant="contained"
             style={{
               borderRadius: 5,
               backgroundColor: "#aaf0d1",
-              margin: "5px"
+              margin: "5px",
             }}
             onClick={() => this.blinker()}
           >
@@ -87,7 +94,7 @@ class BeatBox extends React.Component {
             style={{
               borderRadius: 5,
               backgroundColor: "#f09f92",
-              margin: "5px"
+              margin: "5px",
             }}
             onClick={() => this.turnBlinkerOff()}
           >
