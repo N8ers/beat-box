@@ -1,8 +1,9 @@
+// libraries
 import React from "react";
+import { Card, Button } from "@material-ui/core";
 
-import { Slider } from "@material-ui/core";
-
-import classes from "./BeatBox.module.css";
+// components
+import BpmSlider from "./BpmSlider";
 
 class BeatBox extends React.Component {
   constructor(props) {
@@ -25,8 +26,8 @@ class BeatBox extends React.Component {
 
   changeBPM = (event, newValue) => {
     this.setState({
-      bpm: newValue
-    })
+      bpm: newValue,
+    });
   };
 
   blinker = () => {
@@ -45,14 +46,12 @@ class BeatBox extends React.Component {
       if (currentlyLiteNumber - 1 > 0) {
         document
           .getElementById(currentlyLiteNumber - 1)
-          .classList.remove(classes["lite"]);
+          .classList.remove("lite");
       } else {
-        document.getElementById(4).classList.remove(classes["lite"]);
+        document.getElementById(4).classList.remove("lite");
       }
 
-      document
-        .getElementById(currentlyLiteNumber)
-        .classList.add(classes["lite"]);
+      document.getElementById(currentlyLiteNumber).classList.add("lite");
 
       currentlyLiteNumber < 4
         ? (currentlyLiteNumber += 1)
@@ -62,25 +61,40 @@ class BeatBox extends React.Component {
 
   render() {
     return (
-      <div className={classes.BeatBox}>
-        <div>
-          <span id={1}>1</span>
-          <span id={2}>2</span>
-          <span id={3}>3</span>
-          <span id={4}>4</span>
-        </div>
-        <button onClick={() => this.blinker()}>Start Blinker</button>
-        <button onClick={() => this.turnBlinkerOff()}>Stop Blinker</button>
-        <div className={classes.w250}>
-          <div>BPM: {this.state.bpm}</div>
-          <Slider
-            value={this.state.bpm}
-            max={208}
-            min={40}
-            onChange={this.changeBPM}
-            aria-labelledby="input-slider"
-          />
-        </div>
+      <div className="background">
+        <div className="ungracefulSpacer"></div>
+        <Card className="BeatBox">
+          <div className="header">BeatBox</div>
+          <div>
+            <span id={1}>1</span>
+            <span id={2}>2</span>
+            <span id={3}>3</span>
+            <span id={4}>4</span>
+          </div>
+          <Button
+            variant="contained"
+            style={{
+              borderRadius: 5,
+              backgroundColor: "#aaf0d1",
+              margin: "5px"
+            }}
+            onClick={() => this.blinker()}
+          >
+            Start Blinker
+          </Button>
+          <Button
+            variant="contained"
+            style={{
+              borderRadius: 5,
+              backgroundColor: "#f09f92",
+              margin: "5px"
+            }}
+            onClick={() => this.turnBlinkerOff()}
+          >
+            Stop Blinker
+          </Button>
+          <BpmSlider bpm={this.state.bpm} changeBPM={this.changeBPM} />
+        </Card>
       </div>
     );
   }

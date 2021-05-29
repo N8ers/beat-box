@@ -1,4 +1,37 @@
 .App {
-  margin-top: 50px;
   text-align: center;
+}
+
+.background {
+  height: 100vh;
+  background-color: #aaf0d1;
+}
+
+.ungracefulSpacer {
+  height: 50px;
+}
+
+.BeatBox {
+  width: 500px;
+  margin: 0 auto;
+}
+
+.header {
+  background-color: #79bda0;
+  font-size: 25px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.BeatBox div span {
+  margin: 10px;
+}
+
+.lite {
+  color: pink;
+}
+
+.w250 {
+  width: 250px;
+  margin: 0 auto;
 }
