@@ -1,5 +1,7 @@
 import React from "react";
 
+import { Slider } from "@material-ui/core";
+
 import classes from "./BeatBox.module.css";
 
 class BeatBox extends React.Component {
@@ -7,7 +9,7 @@ class BeatBox extends React.Component {
     super(props);
     this.state = {
       blinkerIsOn: false,
-      bpm: 120 // beats per minute
+      bpm: 120, // beats per minute
     };
   }
 
@@ -18,15 +20,21 @@ class BeatBox extends React.Component {
   };
 
   beatsPerMilliSecond = () => {
-    return (60000 / this.state.bpm);
-  }
+    return 60000 / this.state.bpm;
+  };
+
+  changeBPM = (event, newValue) => {
+    this.setState({
+      bpm: newValue
+    })
+  };
 
   blinker = () => {
     this.setState({
       blinkerIsOn: true,
     });
 
-    let beatsPerMilliSecond = this.beatsPerMilliSecond()
+    let beatsPerMilliSecond = this.beatsPerMilliSecond();
     let currentlyLiteNumber = 1;
 
     let intervalId = setInterval(() => {
@@ -63,6 +71,16 @@ class BeatBox extends React.Component {
         </div>
         <button onClick={() => this.blinker()}>Start Blinker</button>
         <button onClick={() => this.turnBlinkerOff()}>Stop Blinker</button>
+        <div className={classes.w250}>
+          <div>BPM: {this.state.bpm}</div>
+          <Slider
+            value={this.state.bpm}
+            max={208}
+            min={40}
+            onChange={this.changeBPM}
+            aria-labelledby="input-slider"
+          />
+        </div>
       </div>
     );
   }
