@@ -7,6 +7,7 @@ class BeatBox extends React.Component {
     super(props);
     this.state = {
       blinkerIsOn: false,
+      bpm: 120 // beats per minute
     };
   }
 
@@ -16,11 +17,16 @@ class BeatBox extends React.Component {
     });
   };
 
+  beatsPerMilliSecond = () => {
+    return (60000 / this.state.bpm);
+  }
+
   blinker = () => {
     this.setState({
       blinkerIsOn: true,
     });
 
+    let beatsPerMilliSecond = this.beatsPerMilliSecond()
     let currentlyLiteNumber = 1;
 
     let intervalId = setInterval(() => {
@@ -43,7 +49,7 @@ class BeatBox extends React.Component {
       currentlyLiteNumber < 4
         ? (currentlyLiteNumber += 1)
         : (currentlyLiteNumber = 1);
-    }, 500);
+    }, beatsPerMilliSecond);
   };
 
   render() {
