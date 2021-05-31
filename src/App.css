@@ -28,11 +28,19 @@
 }
 
 .lite {
+  border-color: pink;
   color: pink;
+  background-color: pink;
 }
 
 .selected-box {
   background-color: lime;
+}
+
+.box {
+  border: 1px solid black;
+  height: 16px;
+  width: 16px;
 }
 
 .w250 {

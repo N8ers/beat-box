@@ -49,15 +49,15 @@ class BeatBox extends React.Component {
         clearInterval(intervalId);
       }
 
-      if (currentlyLiteNumber - 1 > 0) {
-        document
-          .getElementById(currentlyLiteNumber - 1)
-          .classList.remove("lite");
-      } else {
-        document.getElementById(4).classList.remove("lite");
-      }
+      // if (currentlyLiteNumber - 1 > 0) {
+      //   document
+      //     .getElementById(currentlyLiteNumber - 1)
+      //     .classList.remove("lite");
+      // } else {
+      //   document.getElementById(4).classList.remove("lite");
+      // }
 
-      document.getElementById(currentlyLiteNumber).classList.add("lite");
+      // document.getElementById(currentlyLiteNumber).classList.add("lite");
 
       currentlyLiteNumber < 4
         ? (currentlyLiteNumber += 1)
@@ -71,12 +71,12 @@ class BeatBox extends React.Component {
         <div className="ungracefulSpacer"></div>
         <Card className="BeatBox">
           <div className="header">BeatBox</div>
-          <div className="beatNumbers">
+          {/* <div className="beatNumbers">
             <span id={1}>1</span>
             <span id={2}>2</span>
             <span id={3}>3</span>
             <span id={4}>4</span>
-          </div>
+          </div> */}
           <BeatGrid beat={this.state.beat} />
           <Button
             variant="contained"

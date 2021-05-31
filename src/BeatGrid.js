@@ -53,7 +53,7 @@ class BeatGrid extends React.Component {
                         : ""
                     }
                   >
-                    []
+                    <div className="box"></div>
                   </Grid>
                   <Grid
                     item
@@ -64,7 +64,7 @@ class BeatGrid extends React.Component {
                         : ""
                     }
                   >
-                    []
+                    <div className="box"></div>
                   </Grid>
                   <Grid
                     item
@@ -75,7 +75,7 @@ class BeatGrid extends React.Component {
                         : ""
                     }
                   >
-                    []
+                    <div className="box"></div>
                   </Grid>
                 </Grid>
               </Grid>
