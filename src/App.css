@@ -28,7 +28,7 @@
 }
 
 .lite {
-  border-color: pink;
+  border: 2px solid pink;
   color: pink;
   background-color: pink;
 }
