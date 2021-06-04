@@ -13,6 +13,7 @@ class BeatBox extends React.Component {
       blinkerIsOn: false,
       bpm: 120, // beats per minute
       beat: 1,
+      liteGridCopy: {},
     };
   }
 
@@ -29,6 +30,12 @@ class BeatBox extends React.Component {
   changeBPM = (event, newValue) => {
     this.setState({
       bpm: newValue,
+    });
+  };
+
+  updatedGrid = (newValue) => {
+    this.setState({
+      liteGridCopy: newValue,
     });
   };
 
@@ -77,7 +84,7 @@ class BeatBox extends React.Component {
             <span id={3}>3</span>
             <span id={4}>4</span>
           </div> */}
-          <BeatGrid beat={this.state.beat} />
+          <BeatGrid beat={this.state.beat} updatedGrid={this.updatedGrid} />
           <Button
             variant="contained"
             style={{

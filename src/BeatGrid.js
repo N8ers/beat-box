@@ -1,5 +1,5 @@
 import React from "react";
-import * as Tone from 'tone'
+import * as Tone from "tone";
 import { Grid } from "@material-ui/core";
 
 class BeatGrid extends React.Component {
@@ -21,14 +21,20 @@ class BeatGrid extends React.Component {
     newGrid[kitPiece][beat - 1] = newValue;
 
     const synth = new Tone.Synth().toDestination();
-    const now = Tone.now()
+    const now = Tone.now();
 
-    synth.triggerAttack("C4", now)
-    synth.triggerRelease(now + 1)
+    synth.triggerAttack("C3", now);
+    synth.triggerRelease(now + 1);
 
     this.setState({
       liteGrid: newGrid,
     });
+
+    this.updateGridState();
+  };
+
+  updateGridState = () => {
+    this.props.updatedGrid(this.state.liteGrid);
   };
 
   render() {
