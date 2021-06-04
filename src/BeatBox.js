@@ -69,18 +69,17 @@ class BeatBox extends React.Component {
       const now = Tone.now();
 
       let { kick, snare, hh } = this.state.liteGridCopy;
-      console.log(kick, snare, hh)
 
       if (kick && kick[this.state.beat - 1]) {
-        synthKick.triggerAttack("C2", now);
+        synthKick.triggerAttack("C4", now);
         synthKick.triggerRelease(now + 1);
       }
       if (snare && snare[this.state.beat - 1]) {
-        synthSnare.triggerAttack("C4", now);
+        synthSnare.triggerAttack("E4", now);
         synthSnare.triggerRelease(now + 1);
       }
       if (hh && hh[this.state.beat - 1]) {
-        synthHH.triggerAttack("C5", now);
+        synthHH.triggerAttack("G4", now);
         synthHH.triggerRelease(now + 1);
       }
 
