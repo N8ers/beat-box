@@ -1,5 +1,6 @@
 // libraries
 import React from "react";
+import * as Tone from "tone";
 import { Card, Button } from "@material-ui/core";
 
 // components
@@ -13,7 +14,13 @@ class BeatBox extends React.Component {
       blinkerIsOn: false,
       bpm: 120, // beats per minute
       beat: 1,
-      liteGridCopy: {},
+      liteGridCopy: {
+        // this will be the current default
+        // if user changes grid, it will update here also
+        kick: [1, 0, 1, 0],
+        snare: [0, 1, 0, 1],
+        hh: [1, 1, 1, 1],
+      },
     };
   }
 
@@ -54,6 +61,27 @@ class BeatBox extends React.Component {
 
       if (!this.state.blinkerIsOn) {
         clearInterval(intervalId);
+      }
+
+      const synthKick = new Tone.Synth().toDestination();
+      const synthSnare = new Tone.Synth().toDestination();
+      const synthHH = new Tone.Synth().toDestination();
+      const now = Tone.now();
+
+      let { kick, snare, hh } = this.state.liteGridCopy;
+      console.log(kick, snare, hh)
+
+      if (kick && kick[this.state.beat - 1]) {
+        synthKick.triggerAttack("C2", now);
+        synthKick.triggerRelease(now + 1);
+      }
+      if (snare && snare[this.state.beat - 1]) {
+        synthSnare.triggerAttack("C4", now);
+        synthSnare.triggerRelease(now + 1);
+      }
+      if (hh && hh[this.state.beat - 1]) {
+        synthHH.triggerAttack("C5", now);
+        synthHH.triggerRelease(now + 1);
       }
 
       // if (currentlyLiteNumber - 1 > 0) {
