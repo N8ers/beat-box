@@ -2,6 +2,7 @@
 import React from "react";
 import * as Tone from "tone";
 import { Card, Button } from "@material-ui/core";
+import { PlayArrow, Stop } from '@material-ui/icons';
 
 // components
 import BeatGrid from "./BeatGrid";
@@ -81,6 +82,12 @@ class BeatBox extends React.Component {
       if (hh && hh[this.state.beat - 1]) {
         synthHH.triggerAttack("G4", now);
         synthHH.triggerRelease(now + 1);
+        const player = new Tone.Player(
+          "https://tonejs.github.io/audio/berklee/gong_1.mp3"
+        ).toDestination();
+        Tone.loaded().then(() => {
+          player.start();
+        });
       }
 
       // if (currentlyLiteNumber - 1 > 0) {
@@ -121,7 +128,7 @@ class BeatBox extends React.Component {
             }}
             onClick={() => this.blinker()}
           >
-            Start Blinker
+            <PlayArrow />
           </Button>
           <Button
             variant="contained"
@@ -132,7 +139,7 @@ class BeatBox extends React.Component {
             }}
             onClick={() => this.turnBlinkerOff()}
           >
-            Stop Blinker
+            <Stop />
           </Button>
           <BpmSlider bpm={this.state.bpm} changeBPM={this.changeBPM} />
         </Card>
