@@ -23,8 +23,8 @@ class BeatGrid extends React.Component {
     const synth = new Tone.Synth().toDestination();
     const now = Tone.now();
 
-    synth.triggerAttack("C3", now);
-    synth.triggerRelease(now + 1);
+    // synth.triggerAttack("C3", now);
+    // synth.triggerRelease(now + 1);
 
     this.setState({
       liteGrid: newGrid,
