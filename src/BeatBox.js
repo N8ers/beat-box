@@ -8,6 +8,11 @@ import { PlayArrow, Stop } from "@material-ui/icons";
 import BeatGrid from "./BeatGrid";
 import BpmSlider from "./BpmSlider";
 
+// other
+import kickSample from "./samples/kickSample.mp3";
+import snareSample from "./samples/snareSample.mp3";
+import hhSample from "./samples/highHatSample.mp3";
+
 class BeatBox extends React.Component {
   constructor(props) {
     super(props);
@@ -74,35 +79,40 @@ class BeatBox extends React.Component {
       if (kick && kick[this.state.beat - 1]) {
         // synthKick.triggerAttack("C4", now);
         // synthKick.triggerRelease(now + 1);
-        const player = new Tone.Player(
-          "https://tonejs.github.io/audio/berklee/drum_low_1.mp3"
-        ).toDestination();
-        Tone.loaded().then(() => {
-          player.start();
-        });
+        // const player = new Tone.Player(
+        //   "https://tonejs.github.io/audio/berklee/drum_low_1.mp3"
+        // ).toDestination();
+        // Tone.loaded().then(() => {
+        //   player.start();
+        // });
+        new Audio(kickSample).play();
       }
 
       //tonejs.github.io/audio/berklee/Clap2.mp3
-      https: if (snare && snare[this.state.beat - 1]) {
+      if (snare && snare[this.state.beat - 1]) {
         // synthSnare.triggerAttack("E4", now);
         // synthSnare.triggerRelease(now + 1);
-        const player = new Tone.Player(
-          "https://tonejs.github.io/audio/berklee/Clap2.mp3"
-        ).toDestination();
-        Tone.loaded().then(() => {
-          player.start();
-        });
+        // const player = new Tone.Player(
+        //   "https://s3.amazonaws.com/freecodecamp/drums/side_stick_1.mp3"
+        // ).toDestination();
+        // Tone.loaded().then(() => {
+        //   player.start();
+        // });
+
+        new Audio(snareSample).play();
       }
 
       if (hh && hh[this.state.beat - 1]) {
         // synthHH.triggerAttack("G4", now);
         // synthHH.triggerRelease(now + 1);
-        const player = new Tone.Player(
-          "https://tonejs.github.io/audio/berklee/china_cymbal2.mp3"
-        ).toDestination();
-        Tone.loaded().then(() => {
-          player.start();
-        });
+        // const player = new Tone.Player(
+        //   "https://tonejs.github.io/audio/berklee/china_cymbal2.mp3"
+        // ).toDestination();
+        // Tone.loaded().then(() => {
+        //   player.start();
+        // });
+
+        new Audio(hhSample).play();
       }
 
       // if (currentlyLiteNumber - 1 > 0) {
