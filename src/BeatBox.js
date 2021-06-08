@@ -1,6 +1,5 @@
 // libraries
 import React from "react";
-import * as Tone from "tone";
 import { Card, Button } from "@material-ui/core";
 import { PlayArrow, Stop } from "@material-ui/icons";
 
@@ -69,49 +68,17 @@ class BeatBox extends React.Component {
         clearInterval(intervalId);
       }
 
-      const synthKick = new Tone.Synth().toDestination();
-      const synthSnare = new Tone.Synth().toDestination();
-      const synthHH = new Tone.Synth().toDestination();
-      const now = Tone.now();
-
       let { kick, snare, hh } = this.state.liteGridCopy;
 
       if (kick && kick[this.state.beat - 1]) {
-        // synthKick.triggerAttack("C4", now);
-        // synthKick.triggerRelease(now + 1);
-        // const player = new Tone.Player(
-        //   "https://tonejs.github.io/audio/berklee/drum_low_1.mp3"
-        // ).toDestination();
-        // Tone.loaded().then(() => {
-        //   player.start();
-        // });
         new Audio(kickSample).play();
       }
 
-      //tonejs.github.io/audio/berklee/Clap2.mp3
       if (snare && snare[this.state.beat - 1]) {
-        // synthSnare.triggerAttack("E4", now);
-        // synthSnare.triggerRelease(now + 1);
-        // const player = new Tone.Player(
-        //   "https://s3.amazonaws.com/freecodecamp/drums/side_stick_1.mp3"
-        // ).toDestination();
-        // Tone.loaded().then(() => {
-        //   player.start();
-        // });
-
         new Audio(snareSample).play();
       }
 
       if (hh && hh[this.state.beat - 1]) {
-        // synthHH.triggerAttack("G4", now);
-        // synthHH.triggerRelease(now + 1);
-        // const player = new Tone.Player(
-        //   "https://tonejs.github.io/audio/berklee/china_cymbal2.mp3"
-        // ).toDestination();
-        // Tone.loaded().then(() => {
-        //   player.start();
-        // });
-
         new Audio(hhSample).play();
       }
 
