@@ -104,12 +104,6 @@ class BeatBox extends React.Component {
         <div className="ungracefulSpacer"></div>
         <Card className="BeatBox">
           <div className="header">BeatBox</div>
-          {/* <div className="beatNumbers">
-            <span id={1}>1</span>
-            <span id={2}>2</span>
-            <span id={3}>3</span>
-            <span id={4}>4</span>
-          </div> */}
           <BeatGrid beat={this.state.beat} updatedGrid={this.updatedGrid} />
           <Button
             variant="contained"
