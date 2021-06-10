@@ -82,16 +82,6 @@ class BeatBox extends React.Component {
         new Audio(hhSample).play();
       }
 
-      // if (currentlyLiteNumber - 1 > 0) {
-      //   document
-      //     .getElementById(currentlyLiteNumber - 1)
-      //     .classList.remove("lite");
-      // } else {
-      //   document.getElementById(4).classList.remove("lite");
-      // }
-
-      // document.getElementById(currentlyLiteNumber).classList.add("lite");
-
       currentlyLiteNumber < 4
         ? (currentlyLiteNumber += 1)
         : (currentlyLiteNumber = 1);
