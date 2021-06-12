@@ -57,36 +57,26 @@ class BeatBox extends React.Component {
       blinkerIsOn: true,
     });
 
-    let currentlyLiteNumber = 1;
     let start = new Date().getTime();
     let time = 0;
     let elapsed = "0.0";
-    let diff = null;
 
-    let clicker = () => {
+    let instance = () => {
       if (this.state.blinkerIsOn) {
-        time = this.beatsPerMilliSecond();
-        elapsed = Math.floor(time / this.beatsPerMilliSecond()) / 10;
-
-        if (Math.round(elapsed) === elapsed) {
-          elapsed += ".0";
-        }
-
-        diff = new Date().getTime() - start - time;
-
-        new Audio(kickSample).play();
-
-        currentlyLiteNumber < 4
-          ? (currentlyLiteNumber += 1)
-          : (currentlyLiteNumber = 1);
-
-        this.setState({
-          beat: currentlyLiteNumber,
-        });
+        console.log("yo");
+        // time += 100;
+        // elapsed = Math.floor(time / 100) / 10;
+        // if (Math.round(elapsed) === elapsed) {
+        //   elapsed += ".0";
+        // }
+        // var diff = new Date().getTime() - start - time;
+        // new Audio(snareSample).play();
+        // setTimeout(instance, 100 - diff);
+        setTimeout(instance, 500);
       }
     };
 
-    setTimeout(clicker, this.beatsPerMilliSecond());
+    setTimeout(instance, 500);
   };
 
   blinkerOld = () => {
