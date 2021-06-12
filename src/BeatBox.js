@@ -58,14 +58,13 @@ class BeatBox extends React.Component {
     });
 
     let currentlyLiteNumber = 1;
-
     let start = new Date().getTime();
     let time = 0;
     let elapsed = "0.0";
     let diff = null;
 
     let clicker = () => {
-      if (!this.state.blinkerIsOn) {
+      if (this.state.blinkerIsOn) {
         time = this.beatsPerMilliSecond();
         elapsed = Math.floor(time / this.beatsPerMilliSecond()) / 10;
 
@@ -88,28 +87,6 @@ class BeatBox extends React.Component {
     };
 
     setTimeout(clicker, this.beatsPerMilliSecond());
-
-    // let intervalId = setInterval(() => {
-    //   // new timer logic
-    //   time += 100 // i think this needs to be bpm
-    //   elapsed = Math.floor(time / 100) / 10
-
-    //   if (Math.round(elapsed) == elapsed) {
-    //     elapsed += '.0'
-    //   }
-
-    //   diff = (new Date().getTime() - start) - time
-
-    //   // set state of new beat
-
-    //   if (!this.state.blinkerIsOn) {
-    //     clearInterval(intervalId);
-    //   }
-
-    //   // audio data
-
-    //   // update current lite beat stuff
-    // }, diff);
   };
 
   blinkerOld = () => {
