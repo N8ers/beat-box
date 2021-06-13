@@ -51,32 +51,24 @@ class BeatBox extends React.Component {
     });
   };
 
+  clicker = () => {
+    console.log("clicker fired");
+
+    new Audio(snareSample).play();
+    let setTimeOuter = window.setTimeout(this.clicker, 100);
+
+    if (!this.state.blinkerIsOn) {
+      clearTimeout(setTimeOuter);
+    }
+  };
+
   // blinker needs a better name
   blinker = () => {
     this.setState({
       blinkerIsOn: true,
     });
 
-    let start = new Date().getTime();
-    let time = 0;
-    let elapsed = "0.0";
-
-    let instance = () => {
-      if (this.state.blinkerIsOn) {
-        console.log("yo");
-        // time += 100;
-        // elapsed = Math.floor(time / 100) / 10;
-        // if (Math.round(elapsed) === elapsed) {
-        //   elapsed += ".0";
-        // }
-        // var diff = new Date().getTime() - start - time;
-        // new Audio(snareSample).play();
-        // setTimeout(instance, 100 - diff);
-        setTimeout(instance, 500);
-      }
-    };
-
-    setTimeout(instance, 500);
+    this.clicker();
   };
 
   blinkerOld = () => {
